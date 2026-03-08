@@ -1,15 +1,17 @@
 import arcjet, { shield, detectBot, slidingWindow } from '@arcjet/node';
 
+const mode = process.env.NODE_ENV === 'test' ? 'DRY_RUN' : 'LIVE';
+
 const aj = arcjet({
     key: process.env.ARCJET_KEY,
     rules: [
-        shield({ mode: 'LIVE' }),
+        shield({ mode }),
         detectBot({
-            mode: 'LIVE',
+            mode,
             allow: ['CATEGORY:SEARCH_ENGINE', 'CATEGORY:PREVIEW'],
         }),
         slidingWindow({
-            mode: 'LIVE',
+            mode,
             interval: '2s',
             max: 5,
         }),

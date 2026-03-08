@@ -22,7 +22,7 @@ const securityMiddleware = async (req, res, next) => {
 
         const client = aj.withRule(
             slidingWindow({
-                mode: 'LIVE',
+                mode: process.env.NODE_ENV === 'test' ? 'DRY_RUN' : 'LIVE',
                 interval: '1m',
                 max: limit,
                 name: `${role}-rate-limit`,
