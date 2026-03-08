@@ -1,0 +1,32 @@
+services:
+  neon-local:
+    image: neondatabase/neon_local:latest
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env.development
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-U', 'neon', '-h', 'localhost' ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - '${PORT:-3000}:${PORT:-3000}'
+    env_file:
+      - .env.development
+    environment:
+      DATABASE_URL: postgres://neon:npg@neon-local:5432/neondb
+      NEON_LOCAL_ENDPOINT: http://neon-local:5432/sql
+    volumes:
+      - ./src:/app/src
+      - ./drizzle:/app/drizzle
+      - ./drizzle.config.js:/app/drizzle.config.js
+    depends_on:
+      neon-local:
+        condition: service_healthy

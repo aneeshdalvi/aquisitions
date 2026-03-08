@@ -1,0 +1,11 @@
+node_modules
+.git
+.gitignore
+.env
+.env.*
+.neon_local
+logs
+*.md
+.DS_Store
+.claude
+.agents
