@@ -10,6 +10,7 @@
     "#services/*": "./src/services/*",
     "#utils/*": "./src/utils/*",
     "#controllers/*": "./src/controllers/*",
+    "#middleware/*": "./src/middleware/*",
     "#validations/*": "./src/validations/*"
   },
   "scripts": {
