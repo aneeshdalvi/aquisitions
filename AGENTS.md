@@ -9,11 +9,13 @@ Express 5 REST API ("Acquisitions") using ESM modules, Neon Serverless Postgres 
 ## Commands
 
 ### Development
+
 - `npm run dev` — start with hot-reload (`node --watch`)
 - `npm run dev:docker` — start Docker dev stack (app + Neon Local ephemeral branch)
 - `npm run prod:docker` — start Docker production stack (app + Neon Cloud)
 
 ### Database (Drizzle)
+
 - `npm run db:generate` — generate migration files from schema changes
 - `npm run db:migrate` — apply migrations
 - `npm run db:push` — push schema directly (skips migration files)
@@ -21,11 +23,13 @@ Express 5 REST API ("Acquisitions") using ESM modules, Neon Serverless Postgres 
 - Schema lives in `src/models/*.js`; Drizzle config is in `drizzle.config.js`
 
 ### Lint & Format
+
 - `npm run lint` — ESLint with auto-fix
 - `npm run format` — Prettier write
 - `npm run format:check` — Prettier check only
 
 ### Testing
+
 No test runner is currently configured. The ESLint config reserves Jest-style globals for a future `tests/` directory.
 
 ## Architecture
@@ -69,6 +73,7 @@ Always use these aliases in imports rather than relative paths.
 ### Database environment switching
 
 `src/config/database.js` checks `NODE_ENV`:
+
 - **development** — configures `neonConfig` to use `http://neon-local:5432` (Docker Neon Local proxy). Ephemeral branches are created/destroyed with `docker compose up/down`.
 - **production** — uses default Neon Cloud TLS connection via `DATABASE_URL`.
 
@@ -85,6 +90,7 @@ There is a legacy `src/database.js` at the project root of `src/` — it is unus
 ## Environment Variables
 
 Required variables (see `.env.development` / `.env.production` templates):
+
 - `DATABASE_URL` — Postgres connection string
 - `JWT_SECRET` — secret for signing JWTs
 - `ARCJET_KEY` — Arcjet API key

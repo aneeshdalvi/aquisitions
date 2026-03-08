@@ -6,7 +6,7 @@ services:
     env_file:
       - .env.development
     healthcheck:
-      test: [ 'CMD', 'pg_isready', '-U', 'neon', '-h', 'localhost' ]
+      test: ['CMD', 'pg_isready', '-U', 'neon', '-h', 'localhost']
       interval: 5s
       timeout: 5s
       retries: 10

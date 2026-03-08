@@ -5,7 +5,7 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.errors({ stack: true }),
     winston.format.timestamp(),
-    winston.format.json(),
+    winston.format.json()
   ),
   defaultMeta: { service: 'aquisitions' },
   transports: [
@@ -27,12 +27,14 @@ const logger = winston.createLogger({
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.simple()
-    ),
-  }));
+  logger.add(
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple()
+      ),
+    })
+  );
 }
 
 export default logger;

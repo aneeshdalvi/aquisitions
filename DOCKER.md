@@ -133,12 +133,12 @@ The key toggle is the `NEON_LOCAL_ENDPOINT` env var:
 
 ## File overview
 
-| File | Purpose |
-|---|---|
-| `Dockerfile` | Multi-stage build — `development` target (with devDeps + watch) and `production` target (minimal) |
-| `docker-compose.dev.yml` | Runs app + Neon Local proxy; mounts `src/` for hot-reload |
-| `docker-compose.prod.yml` | Runs app only; connects to Neon Cloud |
-| `.env.development` | Dev env vars (Neon API key, project ID, branch ID) |
-| `.env.production` | Prod env vars (Neon Cloud DATABASE_URL, JWT secret) |
-| `.dockerignore` | Keeps `node_modules`, `.git`, env files, logs out of the build context |
-| `src/config/database.js` | Detects `NEON_LOCAL_ENDPOINT` and configures the serverless driver accordingly |
+| File                      | Purpose                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Dockerfile`              | Multi-stage build — `development` target (with devDeps + watch) and `production` target (minimal) |
+| `docker-compose.dev.yml`  | Runs app + Neon Local proxy; mounts `src/` for hot-reload                                         |
+| `docker-compose.prod.yml` | Runs app only; connects to Neon Cloud                                                             |
+| `.env.development`        | Dev env vars (Neon API key, project ID, branch ID)                                                |
+| `.env.production`         | Prod env vars (Neon Cloud DATABASE_URL, JWT secret)                                               |
+| `.dockerignore`           | Keeps `node_modules`, `.git`, env files, logs out of the build context                            |
+| `src/config/database.js`  | Detects `NEON_LOCAL_ENDPOINT` and configures the serverless driver accordingly                    |
